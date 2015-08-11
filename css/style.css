@@ -1,0 +1,84 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+    }
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #003E42;
+    height: 100%
+    
+}
+.masthead {
+    background-color: #002124;
+    height: 2rem;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border-bottom: 1px solid red;
+    z-index: 9999;
+}
+.masthead-block {
+    background-color: #002124;
+    height: 4rem;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+.car-info {
+    width: 80%;
+    height: 4rem;
+    margin: 1.25rem auto;
+    text-align: center;
+}
+.inputs.makes {
+    margin: 0 .25rem;
+}
+.main-container {
+    display: block;
+    position: fixed;
+    top: 5rem;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.edmunds-logo {
+    width: 220px;
+    margin: 0 auto;
+    z-index: 9999;
+}
+.footer-block {
+    background-color: #002124;
+    height: 44px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+
+}
+.footer {
+    background-color: #002124;
+    height: 22px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    border-top: 1px solid red;
+    z-index: -1;
+
+}

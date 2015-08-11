@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Auto Ranger</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	
+</head>
+<body>
+<div id="wrap">
+	<div class="masthead-block">
+	<header class="masthead">
+		<form class="car-info">
+			<select class="makes" id="make" name="brand" autocomplete="off" required>
+				<option value="" disabled selected>Make</option>
+			</select>
+			<select class="inputs" id="model" name="car" autocomplete="off" placeholder= "Model">
+				<option value="" disabled selected>Model</option>
+				<option>test</option>
+			</select>
+			<select class="inputs" id="year-start" name="yeara" autocomplete="off" placeholder= "Start Year">
+				<option value="" disabled selected>Start Year</option>
+				<option>test</option>
+			</select>
+			<select class="inputs" id="year-end" name="yearb" autocomplete="off" placeholder= "End Year">
+				<option value="" disabled selected>End Year</option>
+				<option>test</option>
+			</select>
+			<input type="text" class="inputs" id="zip" name"zipcode" autocomplete="off" placeholder="Zip Code" maxlength="5" size="10">
+			<input type="submit" class="inputs" id="search-button" name="search" value="Search Now"/>
+		</form>	
+	</header>
+	</div>
+	<section class="main-container">
+		<div class="logo">
+			<h1>Auto Ranger</h1>
+			
+		</div>
+			<div class="results-container" id="results-body">
+				<div class="car">
+
+				</div>
+			</div>
+	</section>
+</div>
+	<div class="footer-block">
+		<div class="edmunds-logo">
+			<img src="220_grey.png" alt="Edmunds logo" width="220" height="44">
+		</div>
+	<footer class="footer">
+		
+	</footer>
+    </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
