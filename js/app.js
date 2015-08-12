@@ -1,33 +1,28 @@
 $(function() {
 
-    window.sdkAsyncInit = function() {
-            // Instantiate the SDK
-            var res = new EDMUNDSAPI('exsk9q7jzebzyqtetmeyu5r5');
-            // Optional parameters
-            var options = {};
-            // Callback function to be called when the API response is returned
-            function success(index,value) {
-                var name = value.name
-                $('.makes').append("<option>" + name + "</option>");
-                
-            }
-            // Oops, Houston we have a problem!
-            function fail(data) {
-                console.log(data);
-            }
-            // Fire the API call
-            res.api('/api/vehicle/v2/makes', options, success, fail);
-            // Additional initialization code such as 
-            // adding Event Listeners goes here
-        };
-    // Load the SDK asynchronously
-    (function(d, s, id){
-        var js, sdkjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "js/edmunds.api.sdk.js";
-        sdkjs.parentNode.insertBefore(js, sdkjs);
-    }(document, 'script', 'edmunds-jssdk'));
-   
+    /*var edmundsAPI = "https://api.edmunds.com/api/vehicle/v2/makes?state=used&view=basic&fmt=json&callback=jsonp&api_key=exsk9q7jzebzyqtetmeyu5r5"  
+    $.getJSON( edmundsAPI, function(data) {
+        console.log(data);
+    })*/
+
+    $.ajax({
+        type: 'GET',
+        url: "https://api.edmunds.com/api/vehicle/v2/makes?state=used&view=basic&api_key=exsk9q7jzebzyqtetmeyu5r5",
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        jsonpCallback: 'jsonpcallback'
+        });
+
 });
+
+    
+function jsonpcallback(result) {
+    console.log(result);
+
+    $.each(result.makes, function(i, val) {
+        
+        var make = result.makes[i];
+        $('.makes').append("<option value='" + make.niceName +"'>" + make.name + "</option>");
+    })
+}
    
