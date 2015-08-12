@@ -1,10 +1,6 @@
 $(function() {
 
-    /*var edmundsAPI = "https://api.edmunds.com/api/vehicle/v2/makes?state=used&view=basic&fmt=json&callback=jsonp&api_key=exsk9q7jzebzyqtetmeyu5r5"  
-    $.getJSON( edmundsAPI, function(data) {
-        console.log(data);
-    })*/
-
+    //Page loads and this AJAX request gets the Edmunds API data for makes
     $.ajax({
         type: 'GET',
         url: "https://api.edmunds.com/api/vehicle/v2/makes?state=used&view=basic&api_key=exsk9q7jzebzyqtetmeyu5r5",
@@ -15,7 +11,9 @@ $(function() {
 
 });
 
-    
+/* Functions List */
+
+//This takes the makes and creates the list in the form's first field 
 function jsonpcallback(result) {
     console.log(result);
 

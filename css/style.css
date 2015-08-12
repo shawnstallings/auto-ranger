@@ -21,17 +21,17 @@ body {
 }
 .masthead {
     background-color: #002124;
-    height: 2rem;
+    height: 2.5rem;
     width: 100%;
     position: fixed;
     top: 0px;
     left: 0px;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #FF0000;
     z-index: 9999;
 }
 .masthead-block {
     background-color: #002124;
-    height: 4rem;
+    height: 5rem;
     width: 100%;
     position: fixed;
     top: 0px;
@@ -44,16 +44,44 @@ body {
     margin: 1.25rem auto;
     text-align: center;
 }
-.inputs.makes {
-    margin: 0 .25rem;
+.inputs,.makes {
+    margin: .25rem .5rem;
+    border-style: none;
+    border-radius: 4px;
+    padding: .25rem;
+}
+#search-button {
+    background-color: #C40000;
+    color: #FFFFFF;
+}
+#search-button:hover {
+    background-color: #FF0000;
 }
 .main-container {
     display: block;
     position: fixed;
-    top: 5rem;
+    top: 4rem;
     width: 100%;
     margin: 0 auto;
     text-align: center;
+}
+.logo {
+    margin: 2rem 0 6rem 0;
+}
+.boxes-image {
+    width: 200px;
+    margin: 0 auto;
+}
+.boxes p {
+    width: 200px;
+    min-height: 2rem;
+    background-color: #C6F0FF;
+    border: 2px solid #FFFFFF;
+    margin: .25rem auto;
+    line-height: 2rem;
+    vertical-align: middle;
+    font-weight: 600;
+    overflow: auto;
 }
 
 .edmunds-logo {
