@@ -47,12 +47,13 @@ body {
 .inputs,.makes {
     margin: .25rem .5rem;
     border-style: none;
-    border-radius: 4px;
+    border-radius: 2px;
     padding: .25rem;
 }
 #search-button {
     background-color: #C40000;
     color: #FFFFFF;
+    padding: .25rem .5rem;
 }
 #search-button:hover {
     background-color: #FF0000;
