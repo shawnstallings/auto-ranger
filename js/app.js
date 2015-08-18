@@ -1,4 +1,6 @@
-var edmunds = []
+var edmunds = [];
+var styles = [];
+
 
 $(function() {
 
@@ -11,14 +13,14 @@ $(function() {
         jsonp: 'callback',
         jsonpCallback: 'jsonpcallback'
         }); 
-    jsonpcallback();
+            jsonpcallback();
  
 
  $('#make').change(function() {
-    
+        
         var make = $('.makes option:selected').text();
         //console.log(edmunds.makes);
-        for (var i = 0; i < edmunds.makes.length; i++) {
+            for (var i = 0; i < edmunds.makes.length; i++) {
             // console.log(edmunds.makes[i]);
             // console.log(edmunds.makes[i].name);
             if (make == edmunds.makes[i].name) {
@@ -38,9 +40,9 @@ $(function() {
 
 $('#model').change(function() {
         var makenN = $('#make option:selected').attr('value');
-        console.log(makenN);
+        //console.log(makenN);
         var modelnN = $('#model option:selected').attr('value');
-        console.log(modelnN);
+        //console.log(modelnN);
         
         $.ajax({
         type: 'GET',
@@ -49,49 +51,50 @@ $('#model').change(function() {
         jsonp: 'callback',
         jsonpCallback: 'jsonpyear'
         });
-    jsonpyear() ;
+            jsonpyear();
     
+})
 
-
-
-
-
-        //var makes = edmunds.makes;
-        //console.log(model);
-        //console.log(makes);
-        
-        //$.each(edmunds.makes, function(i,makes) {
-          //  console.log(makes);
-           
+$('#search-button').on('click', function(event) {
+    event.preventDefault();
+    styles = [];
+        var makenN = $('#make option:selected').attr('value');
+        var modelnN = $('#model option:selected').attr('value');
+        var yearStart = $('#year-start option:selected').text();
+        //console.log(yearStart);
+        var yearEnd = $('#year-end option:selected').text();
+        //console.log(makenN + " " + modelnN + " " + yearStart + " " + yearEnd);
+        var years = [];
+            while(yearStart <= yearEnd){
+                years.push(yearStart);
+                yearStart++;
+                //console.log(yearStart);
+                //console.log(typeof yearStart);
+            }
+            
+        for (var i = 0; i < years.length; i++) {
+            
+            $.ajax({
+            type: 'GET',
+            url: "https://api.edmunds.com/api/vehicle/v2/" + makenN + '/' + modelnN + "/" + years[i] + "/styles?state=used&view=full&api_key=exsk9q7jzebzyqtetmeyu5r5",
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'jsonpstyle'
+            })               
+                .done(function(data) {
+                    //console.log(data);
+                    //styles.push(data);
+                })
+                //console.log(styles);
                
                 
-                //for (var i = 0; i < makes.models.length; i++) {
-                   // console.log(makes.models[i]);
-                    //if (model == makes.models[i].name) {
-                        //console.log(models.name);
-                        //console.log(.years[i]);
-                        //$.each(makes.models, function(i,models) {
-                        //console.log(models);
-                          //  $.each(models.years, function(i,models) {
-                        //$.each(makes.models[i].name, function(x,val) {
-                            //console.log(val.year);
-                //})
-                //break; }}
+        }
+        jsonpstyle();
+})
 
-                //console.log(makes.models[i].years);
-                  // $("#year-start #year-end").empty();
-                        
-                })
-
-                
-               // })
-                
-           // })
         
-
 });
 
-//})
 
 /* Functions List */
 
@@ -107,7 +110,7 @@ function jsonpcallback(result) {
 }
 
 function jsonpyear(result) {
-    console.log(result);
+    //console.log(result);
     $('#year-start').empty();
     $('#year-end').empty();
     $('#year-start').append("<option value='' disabled selected>Select Starting Year</option>");
@@ -120,6 +123,23 @@ function jsonpyear(result) {
         $('#year-end').append("<option>" + years.year + "</option>");
 
     })  
+}
+
+function jsonpstyle(result) {
+    console.log(result);
+   
+    var styleid = result.styles[0].year.id;
+    var year = result.styles[0].year.year;
+    var price = "$" + result.styles[0].price.usedTmvRetail + ".00";
+    console.log(styleid);
+    console.log(year);
+
+    var clone = $('.car-data').clone().appendTo('#results-body').attr({'id': styleid });
+        
+        clone.find($('.year p')).text(year);
+        clone.find($('.price p')).text(price);
+
+
 }
    
 

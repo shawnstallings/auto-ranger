@@ -69,10 +69,25 @@ body {
 .logo {
     margin: 2rem 0 6rem 0;
 }
+.car-data {
+    display: inline-block;
+}
 .boxes-image {
     width: 200px;
     margin: 0 auto;
 }
+.year,.price,.engine,.hp,.mpg,.rating {
+    width: 200px;
+    min-height: 2rem;
+    background-color: #C6F0FF;
+    border: 2px solid #FFFFFF;
+    margin: .25rem auto;
+    line-height: 2rem;
+    vertical-align: middle;
+    font-weight: 600;
+    overflow: auto;
+}
+
 .boxes p {
     width: 200px;
     min-height: 2rem;
